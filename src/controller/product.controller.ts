@@ -48,6 +48,7 @@ class ProductController {
     }
     productDetail = async (req: Request, res: Response) => {
         try {
+            console.log(req.query)
             let id=req.params.id;
             let product=await this.productsService.findByIdProduct(id)
             res.status(200).json(product)

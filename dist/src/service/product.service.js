@@ -13,7 +13,10 @@ class ProductService {
             return this.productRepository.save(product);
         };
         this.findByIdProduct = async (id) => {
-            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory from laptop l join brand b on l.id_brand = b.id where l.id=${id}`;
+            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory
+                   from laptop l
+                            join brand b on l.id_brand = b.id
+                   where l.id = ${id}`;
             let products = await this.productRepository.query(sql);
             return products;
         };
@@ -32,22 +35,32 @@ class ProductService {
             return this.productRepository.remove({ id: id });
         };
         this.findByName = async (name) => {
-            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory from laptop l join brand b on l.id_brand = b.id where l.name='${name}'`;
+            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory
+                   from laptop l
+                            join brand b on l.id_brand = b.id
+                   where l.name = '${name}'`;
             let products = await this.productRepository.query(sql);
             return products;
         };
         this.findByBrand = async (brand) => {
-            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory from laptop l join brand b on l.id_brand = b.id where b.name='${brand}'`;
+            let sql = `select l.id, l.name, l.price, b.id as idCategory, b.name as nameCategory
+                   from laptop l
+                            join brand b on l.id_brand = b.id
+                   where b.name = '${brand}'`;
             let products = await this.productRepository.query(sql);
             return products;
         };
         this.listASCPrice = async () => {
-            let sql = `select * from laptop order by price asc`;
+            let sql = `select *
+                   from laptop
+                   order by price asc`;
             let products = await this.productRepository.query(sql);
             return products;
         };
         this.listDescQuantity = async () => {
-            let sql = `select * from laptop order by quantity desc`;
+            let sql = `select *
+                   from laptop
+                   order by quantity desc`;
             let products = await this.productRepository.query(sql);
             return products;
         };
