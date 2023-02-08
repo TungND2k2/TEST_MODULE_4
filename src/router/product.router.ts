@@ -4,11 +4,11 @@ import ProductController from "../controller/product.controller";
 const routerProduct = Router();
 routerProduct.get('/products',ProductController.showHome)
 routerProduct.post('/product/create',ProductController.createProduct)
-routerProduct.put('/product/edit/:id',ProductController.editProduct)
-routerProduct.delete('/product/delete/:id',ProductController.removeProduct)
+routerProduct.put('/product/:id',ProductController.editProduct)
+routerProduct.delete('/product/:id',ProductController.removeProduct)
 routerProduct.get('/product/:id/find',ProductController.productDetail)
-routerProduct.post('/product/name',ProductController.findByNameProduct)
-routerProduct.post('/product/brand',ProductController.findByBrandProduct)
-routerProduct.get('/product/price',ProductController.showListProductByPriceASC)
-routerProduct.get('/product/quantity',ProductController.showListQuantity)
+routerProduct.post('/product/search/name',ProductController.findByNameProduct)
+routerProduct.post('/product/search/brand',ProductController.findByBrandProduct)
+routerProduct.get('/product/orderby/price',ProductController.showListProductByPriceASC)
+routerProduct.get('/product/orderby/quantity',ProductController.showListQuantity)
 export default routerProduct
